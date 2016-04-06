@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: dodgerblue;
+}
+
+.directories {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.directories > li {
+    display: inline-block;
+}
+
+.directories > li > a {
+    display: block;
+    padding: 10px 20px;
+    color: aliceblue;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.directories > li > a:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.content {
+    width: 100%;
+}
+
+.grid {
+    width: 100%;
+}
+
+.media-container {
+    width: 20%;
+}
+
+.media-container > * {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/**
+* Pure CSS Spinner
+**/
+.load {
+  display: block;
+  height: 6em;
+  width: 6em;
+  margin: 200px auto;
+}
+
+.spin-one,
+.spin-two,
+.spin-three,
+.spin-four {
+  display: inline-block;
+  position: absolute;
+  border-top: 3px solid #74c1c6;
+  border-radius: 6em;
+}
+
+.spin-one {
+  width: 6em;
+  height: 6em;
+  -webkit-animation: spinner 1250ms linear infinite;
+  -moz-animation: spinner 1250ms linear infinite;
+  -ms-animation: spinner 1250ms linear infinite;
+  -o-animation: spinner 1250ms linear infinite;
+  animation: spinner 1250ms linear infinite;
+}
+
+.spin-two {
+  width: 4.8em;
+  height: 4.8em;
+  margin: 0.57143em 0 0 0.57143em;
+  -webkit-animation: spinner 1000ms linear infinite;
+  -moz-animation: spinner 1000ms linear infinite;
+  -ms-animation: spinner 1000ms linear infinite;
+  -o-animation: spinner 1000ms linear infinite;
+  animation: spinner 1000ms linear infinite;
+}
+
+.spin-three {
+  width: 3.75em;
+  height: 3.75em;
+  margin: 1.09091em 0 0 1.09091em;
+  -webkit-animation: spinner 750ms linear infinite;
+  -moz-animation: spinner 750ms linear infinite;
+  -ms-animation: spinner 750ms linear infinite;
+  -o-animation: spinner 750ms linear infinite;
+  animation: spinner 750ms linear infinite;
+}
+
+.spin-four {
+  width: 2.72727em;
+  height: 2.72727em;
+  margin: 1.57895em 0 0 1.57895em;
+  -webkit-animation: spinner 500ms linear infinite;
+  -moz-animation: spinner 500ms linear infinite;
+  -ms-animation: spinner 500ms linear infinite;
+  -o-animation: spinner 500ms linear infinite;
+  animation: spinner 500ms linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

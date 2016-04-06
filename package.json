@@ -1,0 +1,29 @@
+{
+  "name": "simple-media-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianlamb/simple-media-viewer.git"
+  },
+  "author": "Ian Lamb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianlamb/simple-media-viewer/issues"
+  },
+  "homepage": "https://github.com/ianlamb/simple-media-viewer",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "express": "^4.13.4",
+    "jquery": "^2.2.3",
+    "lodash": "^4.8.2",
+    "masonry-layout": "^4.0.0",
+    "underscore": "^1.8.3",
+    "walk": "^2.3.9"
+  }
+}

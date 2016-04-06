@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Simple Media Viewer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css">
+        <script src="/angular/angular.min.js"></script>
+        <script src="/masonry-layout/dist/masonry.pkgd.min.js"></script>
+        <script src="/app.js"></script>
+    </head>
+    <body ng-controller="mainController">
+        <ul class="directories">
+            <li ng-repeat="dir in directories">
+                <a href="{{ dir.path }}">{{ dir.name }}</a>
+            </li>
+        </ul>
+        <div class="content">
+            <div ng-show="loading" class="load">
+                <div class="spin-one"></div>
+                <div class="spin-two"></div>
+                <div class="spin-three"></div>
+                <div class="spin-four"></div>
+            </div>
+            <div ng-hide="loading" class="grid">
+                <div ng-repeat="file in files" class="media-container">
+                    <img ng-if="getFileType(file) === 'image'" src="{{ file.name }}" />
+                    <video ng-if="getFileType(file) === 'video'" src="{{ file.name }}" autoplay loop muted />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
