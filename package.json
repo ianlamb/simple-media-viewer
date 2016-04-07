@@ -18,12 +18,22 @@
   "homepage": "https://github.com/ianlamb/simple-media-viewer",
   "dependencies": {
     "angular": "^1.5.3",
+    "angular-images-loaded": "^0.1.1",
     "angular-route": "^1.5.3",
     "express": "^4.13.4",
+    "imagesloaded": "^4.1.0",
     "jquery": "^2.2.3",
     "lodash": "^4.8.2",
     "masonry-layout": "^4.0.0",
     "underscore": "^1.8.3",
     "walk": "^2.3.9"
+  },
+  "devDependencies": {
+    "concurrent-transform": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-image-resize": "^0.8.0",
+    "gulp-rename": "^1.2.2",
+    "rename": "^1.0.3"
   }
 }

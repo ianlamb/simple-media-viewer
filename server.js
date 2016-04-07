@@ -82,6 +82,7 @@ walkDirectories().then(function() {
         res.send(data);
     });
 
+    app.use(express.static(__dirname + '/thumbnails'));
     app.use(express.static(__dirname + '/public'));
     app.use(express.static(__dirname + '/node_modules'));
     app.use(express.static(walkDir));
