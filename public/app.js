@@ -19,6 +19,30 @@ $(function() {
     var $loading = $('.load');
     var $grid = $('.grid');
 
+    var Lightbox = function() {
+        this.element = document.createElement('div');
+        this.element.classList.add('lightbox');
+        this.element.classList.add('hide');
+        this.element.addEventListener('click', function() {
+            lightbox.hide();
+        });
+        document.body.appendChild(this.element);
+    }
+    
+    Lightbox.prototype.setContent = function(html) {
+        this.element.innerHTML = html;
+    }
+    
+    Lightbox.prototype.show = function() {
+        this.element.classList.remove('hide');
+    }
+    
+    Lightbox.prototype.hide = function() {
+        this.element.classList.add('hide');
+    }
+
+    var lightbox = new Lightbox();
+
     $.get('/api/directories')
         .success(function(data) {
             var $directories = $('.directories');
@@ -54,25 +78,39 @@ $(function() {
     }
     
     function addTile(file, init) {
-        var $mediaContainer = $('<div class="media-container"></div>');
         var fileType = getFileType(file);
+        var $mediaContainer = $('<div data-type="' + fileType + '" data-url="' + file.url + '" class="media-container"></div>');
         switch (fileType) {
+        case 'image':
+            var fileName = file.name;
+            var parts = file.name.split('.');
+            parts[parts.length-2] = parts[parts.length-2];
+            var ext = parts[parts.length-1];
+            var thumb = '/thumbnails/' + parts.join('.');
+            if (ext !== 'gif') {
+                fileName = thumb;
+            }
+            $mediaContainer.append('<img src="' + fileName + '" />');
+            break;
+        case 'video':
+            $mediaContainer.append('<video src="' + file.name + '" autoplay loop muted />');
+            break;
+        }
+
+        $mediaContainer.on('click', function() {
+            var fileType = $(this).data('type');
+            var url = $(this).data('url');
+            switch (fileType) {
             case 'image':
-                var fileName = file.name;
-                var parts = file.name.split('.');
-                parts[parts.length-2] = parts[parts.length-2] + '-thumb';
-                var ext = parts[parts.length-1];
-                var thumb = parts.join('.');
-                if (ext !== 'gif') {
-                    fileName = thumb;
-                }
-                $mediaContainer.append('<img src="' + fileName + '" />');
+                lightbox.setContent('<img src="' + url + '" />');
                 break;
             case 'video':
-                $mediaContainer.append('<video src="' + file.name + '" autoplay loop muted />');
+                lightbox.setContent('<video src="' + url + '" autoplay loop muted />');
                 break;
-        }
-        
+            }
+            lightbox.show();
+        });
+
         // if ($grid.children().length > maxTiles) {
         //     var $first = $('.media-container').first();
         //     $grid.masonry()

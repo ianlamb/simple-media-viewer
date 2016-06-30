@@ -2,6 +2,9 @@ var walk = require('walk');
 var _ = require('underscore');
 var express = require('express');
 var app = express();
+var path = require('path');
+var gm = require('gm');
+var fs = require('fs');
 
 var walkDir = '/Users/ian/Pictures/lol';
 
@@ -14,6 +17,7 @@ var directories = [{
     name: 'base',
     files: []
 }];
+
 function walkDirectories() {
     return new Promise(function(resolve) {
         var walker = walk.walk(walkDir, { followLinks: false });
@@ -35,16 +39,32 @@ function walkDirectories() {
         });
 
         walker.on('file', function(root, stat, next) {
+            var imagePath = path.resolve(root, stat.name);
+            var thumbPath = 'public/thumbnails/' + stat.name;
+            var url = root.split(walkDir)[1] + "/" + stat.name;
+
             directories.some(function(dir) {
                 if (dir.fullPath === root) {
                     dir.files.push({
                         root: root,
+                        url: url,
                         name: stat.name
                     });
                     return true;
                 }
                 return false;
             });
+
+            // make thumbnail
+            gm(imagePath)
+                .resize(240, 240)
+                .noProfile()
+                .write(thumbPath, function (err) {
+                    if (!err) {
+                        console.log('thumb generated:', thumbPath);
+                    }
+                });
+
             next();
         });
 
