@@ -23,6 +23,7 @@
     "express": "^4.13.4",
     "gm": "^1.22.0",
     "imagesloaded": "^4.1.0",
+    "is-in-viewport": "^3.0.0",
     "jquery": "^2.2.3",
     "lodash": "^4.8.2",
     "masonry-layout": "^4.0.0",
@@ -30,6 +31,6 @@
     "walk": "^2.3.9"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^3.9.1"
   }
 }
